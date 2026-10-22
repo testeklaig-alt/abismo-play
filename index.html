@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101014">
+  <title>Abismo Play</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #101014;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      padding: 22px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #17171e;
+    }
+    .logo { font-size: 25px; font-weight: bold; }
+    .logo span { color: #8b5cf6; }
+    .search {
+      background: #292933;
+      color: white;
+      border: 1px solid #444450;
+      border-radius: 20px;
+      padding: 9px 12px;
+      width: 125px;
+    }
+    .hero {
+      padding: 35px 20px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      background: linear-gradient(0deg, #101014, #332052);
+    }
+    .tag { color: #c4a5ff; font-size: 12px; }
+    h1 { font-size: 34px; margin: 12px 0; }
+    .hero p { color: #d0cbd8; line-height: 1.5; }
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .play { background: #8b5cf6; color: white; }
+    .section { padding: 10px 16px; }
+    .movies {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 10px 0 18px;
+    }
+    .movie {
+      flex: 0 0 125px;
+      height: 175px;
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      align-items: end;
+      font-weight: bold;
+      background: linear-gradient(145deg, #56417d, #20202a);
+    }
+    .movie:nth-child(2) { background: linear-gradient(145deg, #8c453f, #24202b); }
+    .movie:nth-child(3) { background: linear-gradient(145deg, #326a75, #20202a); }
+    .movie:nth-child(4) { background: linear-gradient(145deg, #9a7435, #24202b); }
+    .notice { color: #aaa5b5; font-size: 12px; }
+    footer {
+      text-align: center;
+      padding: 22px;
+      color: #8f8b99;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">ABISMO<span>PLAY</span></div>
+    <input class="search" id="busca" placeholder="Buscar..." aria-label="Buscar títulos">
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="tag">DESTAQUE • ABISMO PLAY</span>
+      <h1>Seu próximo universo começa aqui.</h1>
+      <p>Explore filmes e séries em um só lugar.</p>
+      <div>
+        <button class="play" onclick="alert('O catálogo está em desenvolvimento!')">
+          ▶ Explorar catálogo
+        </button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Filmes em destaque</h2>
+      <div class="movies" id="filmes">
+        <div class="movie" data-title="Horizonte">Horizonte</div>
+        <div class="movie" data-title="Última Missão">Última Missão</div>
+        <div class="movie" data-title="Mundo Azul">Mundo Azul</div>
+        <div class="movie" data-title="O Despertar">O Despertar</div>
+      </div>
+      <p class="notice">Títulos ilustrativos para demonstração.</p>
+    </section>
+
+    <section class="section">
+      <h2>Séries para descobrir</h2>
+      <div class="movies">
+        <div class="movie">Além do Tempo</div>
+        <div class="movie">Código Sombrio</div>
+        <div class="movie">Nova Fronteira</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    ABISMO PLAY · Projeto em desenvolvimento
+  </footer>
+
+  <script>
+    const busca = document.getElementById('busca');
+    busca.addEventListener('input', () => {
+      const termo = busca.value.toLowerCase();
+      document.querySelectorAll('.movie[data-title]').forEach(item => {
+        item.style.display = item.dataset.title.toLowerCase().includes(termo)
+          ? 'flex' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
